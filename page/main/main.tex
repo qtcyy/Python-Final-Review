@@ -7,6 +7,16 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{geometry}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,  % 启用彩色链接
+  linkcolor=blue,   % 内部链接颜色（目录、交叉引用等）
+  urlcolor=blue,    % URL链接颜色
+  citecolor=blue,   % 引用链接颜色
+  bookmarksdepth=3, % PDF书签深度
+  pdfstartview=FitH % PDF打开时的视图方式
+}
+
 \geometry{margin=2.5cm}
 
 \usepackage{listings}
@@ -47,15 +57,17 @@
 
 \begin{document}
 
-% 使用minipage来实现标题和小猫的并排布局
 \begin{minipage}[t]{0.7\textwidth}
   \fontsize{20pt}{24pt}\selectfont Python 期末复习模拟卷笔记
 \end{minipage}
 \begin{minipage}[p]{0.25\textwidth}
   \hfill
-  % 插入小猫贴纸图片
   \includegraphics[width=3cm]{./sticker.pdf}
 \end{minipage}
+
+\tableofcontents
+
+\newpage
 
 \vspace{1cm}
 
