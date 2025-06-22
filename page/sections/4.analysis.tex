@@ -1,0 +1,54 @@
+\section{简答题}
+
+\subsection{第1题}
+在Python的运算符中，|属于何种类型运算符？在集合set中|有什么作用？并分析逻辑运算符"or"的短路求值特性。
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  \textbf{答案：}
+
+  \textbf{1. |运算符的类型：}
+  \qquad |属于\textbf{位运算符}（按位或运算符）。它对整数的二进制位进行按位或运算。
+
+  \textbf{2. 在集合set中|的作用：}
+  \qquad 在集合中，|表示\textbf{并集运算}。例如：
+  \begin{lstlisting}
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+result = set1 | set2  # 结果：{1, 2, 3, 4, 5}
+  \end{lstlisting}
+
+  \textbf{3. or的短路求值特性：}
+  \qquad \textbf{短路求值}是指当第一个操作数能够确定整个表达式的结果时，就不再计算第二个操作数。
+
+  \qquad 对于or运算符：
+  \begin{itemize}
+    \item 如果第一个操作数为True，则不评估第二个操作数，直接返回第一个操作数的值
+    \item 如果第一个操作数为False，则返回第二个操作数的值
+  \end{itemize}
+
+  \qquad 示例：
+  \begin{lstlisting}
+def func():
+    print("函数被调用了")
+    return True
+
+result = True or func()  # func()不会被调用，不会打印
+  \end{lstlisting}
+
+\end{mdframed}
+
+\subsection{第2题}
+\texttt{zip()}函数可以将两个或多个可迭代类型(元组、列表等)组合为一个关系对(元组)，并返回包含这些元素的zip对象，该函数非常适合生成键值对。
+
+请根据以下示例数据：
+\begin{itemize}
+  \item \verb|[|(1, 'A'), (2, 'B'), (3, 'C'), (4, 'D')\verb|]|
+  \item \verb|{1: 'A', 2: 'B', 3: 'C', 4: 'D'}|(1分)
+  \item \verb|[|'A', 'B', 'C', 'D'\verb|]|
+\end{itemize}
+
+\subsection{第3题}
+请列举pip常用的5个命令及其作用。

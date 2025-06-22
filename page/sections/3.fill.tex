@@ -1,0 +1,148 @@
+\section{填空题}
+
+\subsection{第1题}
+有如下Python程序：
+\begin{lstlisting}
+def f(a, b):
+    if b == 0:
+        print(a)
+    else:
+        f(b, a % b)
+\end{lstlisting}
+则\texttt{print(f(9,6))}的输出结果是\underline{\hspace{2cm}}、\underline{\hspace{2cm}}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：\underline{3}, \underline{None}
+
+  解释：
+
+  \qquad 这是一个经典的辗转相除法求最大公约数（GCD）的递归代码。
+  当b为0时，a就等于gcd(a,b)的值。由于没有返回值，所以print(f(a,b))输出None。
+
+\end{mdframed}
+
+\subsection{第2题}
+表达式\texttt{sorted(['abc', 'acd', 'ade'], key=lambda x:(x[0],x[2]))}的值为\\
+\underline{\hspace{8cm}}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：\underline{['abc', 'acd', 'ade']}
+
+  解释：
+
+  \qquad sorted函数使用key参数来指定排序的依据。这里的key是lambda x:(x[0],x[2])，
+  意味着对每个字符串取第0个字符和第2个字符组成元组作为排序键。
+
+  \qquad 分析每个字符串的排序键：
+  \begin{itemize}
+    \item 'abc': (x[0], x[2]) = ('a', 'c')
+    \item 'acd': (x[0], x[2]) = ('a', 'd')
+    \item 'ade': (x[0], x[2]) = ('a', 'e')
+  \end{itemize}
+
+  \qquad 由于第0个字符都是'a'，按第2个字符排序：'c' < 'd' < 'e'，
+  所以原顺序已经是正确的排序结果。
+
+\end{mdframed}
+
+\subsection{第3题}
+表达式\verb|'The first:{1:.3f}, the second is {0:b}'.format(2,3.1415926)|的值为\\
+\underline{\hspace{8cm}}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：\underline{'The first:3.142, the second is 10'}
+
+  解释：
+
+  \qquad 这是字符串的format方法格式化，format(2, 3.1415926)传入两个参数：
+  \begin{itemize}
+    \item 参数0：2
+    \item 参数1：3.1415926
+  \end{itemize}
+
+  \qquad 格式化说明：
+  \begin{itemize}
+    \item \{1:.3f\}：取第1个参数3.1415926，格式化为保留3位小数的浮点数 → 3.142
+    \item \{0:b\}：取第0个参数2，格式化为二进制 → 10
+  \end{itemize}
+
+  \qquad 因此最终结果为：'The first:3.142, the second is 10'
+
+\end{mdframed}
+
+\subsection{第4题}
+假设正则表达式模块re已导入，那么表达式\texttt{re.sub('\textbackslash d+', '1', 'a12345bbbbb67c890d0e')}的值为\\
+\underline{\hspace{8cm}}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：\underline{'a1bbbbb1c1d1e'}
+
+  解释：
+
+  \qquad re.sub(pattern, replacement, string)函数用于字符串替换：
+  \begin{itemize}
+    \item pattern: '\textbackslash d+' 即 \textbackslash d+，匹配一个或多个连续数字
+    \item replacement: '1'，替换成的字符串
+    \item string: 'a12345bbbbb67c890d0e'，要处理的原字符串
+  \end{itemize}
+
+  \qquad 匹配过程：
+  \begin{itemize}
+    \item 原字符串：'a12345bbbbb67c890d0e'
+    \item \textbackslash d+ 匹配到的数字序列：12345, 67, 890, 0
+    \item 每个数字序列都被替换为'1'
+  \end{itemize}
+
+  \qquad 替换结果：'a1bbbbb1c1d1e'
+
+\end{mdframed}
+
+\subsection{第5题}
+下面代码的功能是，随机生成20个介于[1,50]之间的整数，然后统计每个整数出现频率。请把缺少的代码补全。
+\begin{lstlisting}
+import random
+x = [random.______(1, 50) for i in range(20)]
+d = dict()
+for i in x:
+    d[i] = d.get(i, ______) + 1
+for k, v in d.items():
+    print(k, v)
+\end{lstlisting}
+上述横线处分别填写\underline{\hspace{3cm}}、\underline{\hspace{3cm}}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：\underline{randint}、\underline{0}
+
+  解释：
+
+  \qquad 第一个空：random.\underline{randint}(1, 50)
+  \begin{itemize}
+    \item randint(a, b)函数生成[a, b]范围内的随机整数（包含端点）
+    \item 这里需要生成[1, 50]之间的整数，所以用randint
+  \end{itemize}
+
+  \qquad 第二个空：d.get(i, \underline{0})
+  \begin{itemize}
+    \item dict.get(key, default)方法：如果key存在返回对应值，否则返回default
+    \item 统计频率时，如果数字第一次出现，频率应该是0+1=1
+    \item 如果数字已经存在，频率就是原来的值+1
+  \end{itemize}
+
+  \qquad 代码逻辑：生成20个随机数→遍历每个数→统计每个数的出现次数→输出结果
+
+\end{mdframed}

@@ -1,0 +1,76 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tikz}  % 添加TikZ包用于绘图
+\usetikzlibrary{shapes,positioning}
+% 在导言区进行样式设置
+\lstset{
+  language=Python, % 设置语言
+  basicstyle=\ttfamily\small, % 设置字体族和大小
+  breaklines=true, % 自动换行
+  keywordstyle=\bfseries\color{Purple}, % C语言关键字：紫色粗体
+  morekeywords={uint32_t,uint8_t,float,char,static,const}, % C语言扩展关键字
+  emph=[1]{delay_init,key_init,lcd_init,infrared_init,rgb_init,buzzer_init,led_init,usart_init,htu21d_init,fan_pwm_init}, % 初始化函数
+  emphstyle=[1]\bfseries\color{Red}, % 初始化函数：红色粗体
+  emph=[2]{htu21d_t,htu21d_h,get_infrared_status,fan_pwm_control,rgb_ctrl,led_control,buzzer_tweet}, % 硬件控制函数
+  emphstyle=[2]\bfseries\color{Orange}, % 硬件控制函数：橙色粗体
+  emph=[3]{update_display,get_centered_x,check_uart_command,send_system_status,auto_control,check_human_presence}, % 逻辑函数
+  emphstyle=[3]\bfseries\color{Blue}, % 逻辑函数：蓝色粗体
+  emph=[4]{sprintf,printf,strncmp,strlen,delay_ms,delay_count}, % 标准库函数
+  emphstyle=[4]\color{Magenta}, % 标准库函数：洋红色
+  commentstyle=\itshape\color{ForestGreen}, % 注释：森林绿斜体
+  stringstyle=\color{Maroon}, % 字符串：栗色
+  identifierstyle=\color{Black}, % 标识符：黑色
+  numberstyle=\tiny\color{Gray}, % 数字：灰色小字
+  columns=flexible,
+  numbers=none, % 不显示行号
+  % numbersep=1.5em, % 设置行号的具体位置
+  % numberstyle=\footnotesize\color{Gray}, % 行号样式
+  frame=single, % 边框
+  framesep=1em, % 设置代码与边框的距离
+  rulecolor=\color{lightgray}, % 边框颜色
+  backgroundcolor=\color{Gray!5}, % 背景色：淡灰色
+  tabsize=4, % Tab键宽度
+  showstringspaces=false % 不显示字符串中的空格标记
+}
+
+\begin{document}
+
+% 使用minipage来实现标题和小猫的并排布局
+\begin{minipage}[t]{0.7\textwidth}
+  \fontsize{20pt}{24pt}\selectfont Python 期末复习模拟卷笔记
+\end{minipage}
+\begin{minipage}[p]{0.25\textwidth}
+  \hfill
+  % 插入小猫贴纸图片
+  \includegraphics[width=3cm]{./sticker.pdf}
+\end{minipage}
+
+\vspace{1cm}
+
+\raggedright
+
+\input{../sections/1.selections.tex}
+
+\input{../sections/2.infer.tex}
+
+\input{../sections/3.fill.tex}
+
+\input{../sections/4.analysis.tex}
+
+\input{../sections/5.reading.tex}
+
+\input{../sections/6.coding.tex}
+
+\end{document}

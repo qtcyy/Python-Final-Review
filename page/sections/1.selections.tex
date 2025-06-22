@@ -1,0 +1,720 @@
+\section{单选题}
+
+\subsection{第1题}
+下面代码输出的结果是（）
+\begin{lstlisting}
+def func(num):
+    num += 1
+a = 10
+func(a)
+print(a)
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+  \item 10
+  \item 11
+  \item int
+  \item 程序执行错误
+\end{enumerate}
+
+\textbf{\color{red}【笔记】}
+
+正确答案：A
+
+Python中函数是传值调用，不影响原本的值。
+
+\subsection{第2题}
+切片操作\texttt{list(range(6))[::-1]}执行结果为（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item \verb|[|0, 2, 4, 6\verb|]|
+  \item \verb|[|6, 5, 4, 3, 2, 1\verb|]|
+  \item \verb|[|0, -1\verb|]|
+  \item \verb|[|5, 4, 3, 2, 1, 0\verb|]|
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：D
+
+  \texttt{list()}将对象转换成列表类型，\texttt{[::-1]}将列表反转。
+
+\end{mdframed}
+
+\subsection{第3题}
+下列选项中可以获取Python整数类型帮助的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item help(float)
+  \item dir(float)
+  \item help(int)
+  \item dir(str)
+\end{enumerate}
+
+\subsection{第4题}
+以下选项中符合Python语言变量命名规则的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item it's
+  \item 3C
+  \item pass
+  \item \_AI
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：D
+
+  \begin{itemize}
+    \item A选项中出现了\texttt{'}符号，在Python中的意思是字符串；
+    \item B选项数字开头是不允许的；
+    \item C选项是Python关键字；
+    \item D选项符合Python变量名要求。
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第5题}
+关于Python序列类型的通用操作符和函数，以下选项中描述错误的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item 如果x是s的元素，x in s 返回True
+  \item 如果s是一个序列，s = [1,"kate",True]，s[3] 返回True
+  \item 如果s是一个序列，s = [1,"kate",True]，s[-1] 返回True
+  \item 如果x不是s的元素，x not in s 返回True
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：B
+
+  列表s的长度为3，可以访问的索引为0,1,2，如果访问s[3]会报错。
+
+\end{mdframed}
+
+\subsection{第6题}
+下列选项中不是Python保留字的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item False
+  \item True
+  \item do
+  \item class
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：C
+
+  do是C语言关键字，Python中无此关键字。
+
+\end{mdframed}
+
+\subsection{第7题}
+Python 3.x语言中，以下表达式输出结果为66的选项是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item print("6+6")
+  \item print(6+6)
+  \item print(eval("6+6"))
+  \item print(eval("6" + "6"))
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：D
+
+  \begin{itemize}
+    \item A选项打印的是字符串"6+6"；
+    \item B选项打印的是6+6的值12；
+    \item C选项使用eval将两个字符串'6'转换成数字6后相加，得到12并输出；
+    \item D选项使用eval将字符串'66'转换成数字66并输出。
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第8题}
+关于eval函数，以下选项中描述错误的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item eval函数的作用是将输入的字符串转为Python语句，并执行该语句
+  \item 如果用户希望输入一个数字，并用程序对这个数字进行计算，可以采用eval(input())组合
+  \item 执行eval("Hello")和执行eval("'Hello'")得到相同的结果
+  \item 执行eval('123')输出123
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：C
+
+  \textbf{eval函数详解：}
+
+  \textbf{1. 基本功能：}
+  \begin{itemize}
+    \item eval()函数用于执行字符串表达式，并返回表达式的结果
+    \item 语法：eval(expression, globals=None, locals=None)
+    \item expression：要执行的字符串表达式
+  \end{itemize}
+
+  \textbf{2. 使用示例：}
+    \begin{lstlisting}
+# 数学表达式
+eval("2 + 3")          # 返回 5
+eval("2 * 3 + 1")      # 返回 7
+eval("abs(-5)")        # 返回 5
+
+# 字符串表达式
+eval("'Hello'")        # 返回 'Hello'
+eval("'3' + '4'")      # 返回 '34'
+
+# 变量表达式
+x = 10
+eval("x + 5")          # 返回 15
+
+# 列表和字典
+eval("[1, 2, 3]")      # 返回 [1, 2, 3]
+eval("{'a': 1, 'b': 2}")  # 返回 {'a': 1, 'b': 2}
+    \end{lstlisting}
+
+  \textbf{3. 错误示例分析：}
+  \begin{itemize}
+    \item eval("Hello")：会报错，因为Hello被当作变量名，但未定义
+    \item eval("'Hello'")：正确，返回字符串'Hello'
+    \item eval("123")：返回整数123
+    \item eval("'123'")：返回字符串'123'
+  \end{itemize}
+
+  \textbf{4. 常见用法：}
+    \begin{lstlisting}
+# 用户输入处理
+user_input = input("请输入表达式: ")
+result = eval(user_input)  # 注意：有安全风险
+
+# 配置文件解析
+config_str = "{'debug': True, 'port': 8080}"
+config = eval(config_str)
+    \end{lstlisting}
+\end{mdframed}
+
+\subsection{第9题}
+下面代码的输出结果是（）
+\begin{lstlisting}
+d = {"大海":"蓝色", "天空":"灰色", "大地":"黑色"}
+print(d["大地"], d.get("大地","黄色"), d.setdefault('草地','绿色'))
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+  \item 黑色 黑色 None
+  \item 黑色 黄色 绿色
+  \item 黑色 黄色 None
+  \item 黑色 黑色 绿色
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：D
+
+  \begin{itemize}
+    \item 第一个d["大地"]在字典d中存在键，对应为"蓝色"；
+    \item 第二个d.get("大地","黄色")，其含义为获取键“大地”，如果不存在返回值“黄色”
+    \item 第三个d.setdefault('草地','绿色')，key不存在，将key设置为default值，并返回default这个值。
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第10题}
+以下哪个是Python中用于科学计算与可视化的第三方库（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item jieba
+  \item scipy
+  \item request
+  \item random
+\end{enumerate}
+
+\subsection{第11题}
+以下选项中，不是Python对文件的打开模式的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item 'r'
+  \item 'c'
+  \item 'w'
+  \item '+'
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：B
+
+  Python文件打开模式说明：
+  \begin{itemize}
+    \item 'r'：只读模式（默认），文件必须存在
+    \item 'w'：写入模式，会覆盖原文件内容，如果文件不存在则创建
+    \item '+'：可读写模式，必须与其他模式组合使用，如'r+'、'w+'
+    \item 'c'：不是Python的文件打开模式，此选项为错误选项
+  \end{itemize}
+
+  其他常见的文件打开模式：
+  \begin{itemize}
+    \item 'a'：追加模式，在文件末尾写入，如果文件不存在则创建
+    \item 'x'：独占创建模式，文件必须不存在
+    \item 'b'：二进制模式，与其他模式组合使用，如'rb'、'wb'
+    \item 't'：文本模式（默认），与其他模式组合使用，如'rt'、'wt'
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第12题}
+关于下面代码中的变量x，以下选项中描述正确的是（）
+\begin{lstlisting}
+fo = open(fname, "r")
+for x in fo:
+    print(x)
+fo.close()
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+  \item 变量x表示文件中的一组字符
+  \item 变量x表示文件中的一行字符
+  \item 变量x表示文件中的一个字符
+  \item 变量x表示文件中的全体字符
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：B
+
+  代码分析：
+  \begin{itemize}
+    \item open(fname, "r")以只读模式打开文件，返回文件对象fo
+    \item 在Python中，当使用for循环遍历文件对象时，每次迭代获得的是文件的一行内容
+    \item 变量x在每次循环中存储文件的一行字符（包括行尾的换行符）
+    \item print(x)会输出文件的每一行内容
+    \item fo.close()关闭文件
+  \end{itemize}
+
+  知识点：
+  \begin{itemize}
+    \item 文件对象是可迭代的，for循环遍历文件对象时逐行读取
+    \item 每行内容包含该行的所有字符以及行尾的换行符
+    \item 这种方式适合处理大文件，因为每次只读取一行到内存中
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第13题}
+以上代码输出结果为（）
+\begin{lstlisting}
+for i in "Python":
+    print(i, end=", ")
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+  \item P*y*t*h*o*n*
+  \item P,y,t,h,o,n,
+  \item P y t h o n
+  \item Python
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：B
+
+  代码分析：
+  \begin{itemize}
+    \item for循环遍历字符串"Python"，每次取出一个字符赋值给变量i
+    \item print(i, end=", ")中的end参数指定输出结束时不换行，而是输出", "
+    \item 因此每个字符后面都会跟着逗号和空格
+    \item 最终输出结果为：P, y, t, h, o, n,
+  \end{itemize}
+
+  知识点：print函数的end参数用于指定输出结束时的字符，默认为换行符\texttt{\\n}。
+
+\end{mdframed}
+
+\subsection{第14题}
+执行Python语句\texttt{nums=set([1,2,2,3,3,3,4])}和\texttt{print(len(nums))}的结果是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item 1
+  \item 2
+  \item 4
+  \item 7
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：C
+
+  代码分析：
+  \begin{itemize}
+    \item 列表[1,2,2,3,3,3,4]包含7个元素，其中有重复元素
+    \item set()函数将列表转换为集合，集合具有元素唯一性，会自动去除重复元素
+    \item 转换后的集合nums包含元素\{1,2,3,4\}
+    \item len(nums)返回集合中元素的个数，即4
+  \end{itemize}
+
+  知识点：
+  \begin{itemize}
+    \item set是Python的内置数据类型，表示无序且不重复的元素集合
+    \item set会自动去除重复元素，保持元素的唯一性
+    \item len()函数返回序列或集合中元素的个数
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第15题}
+如下代码的输出为（）
+\begin{lstlisting}
+import re
+s = 'a bc abc abbb abbbbbca'
+re.findall('ab*', s)
+\end{lstlisting}
+
+\begin{enumerate}[label=\Alph*.]
+  \item \verb|[|'ab', 'ab', 'ab'\verb|]|
+  \item \verb|[|'ab', 'abbb', 'abbbb'\verb|]|
+  \item \verb|[|'a', 'ab', 'abbb', 'abbbb', 'a'\verb|]|
+  \item \verb|[|'a', 'ab', 'abbb', 'abbbb'\verb|]|
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：C
+
+  \textbf{正则表达式详解：}
+
+  \textbf{1. 基本概念：}
+  \begin{itemize}
+    \item 正则表达式（Regular Expression）是用于匹配字符串的强大工具
+    \item 'ab*'表示匹配字母'a'后跟0个或多个字母'b'
+    \item re.findall()返回字符串中所有匹配模式的子字符串列表
+  \end{itemize}
+
+  \textbf{2. 量词详解：}
+  \begin{itemize}
+    \item *：匹配前面字符0次或多次（贪婪匹配）
+    \item +：匹配前面字符1次或多次
+    \item ?：匹配前面字符0次或1次
+    \item \{n\}：恰好匹配n次
+    \item \{n,\}：至少匹配n次
+    \item \{n,m\}：匹配n到m次
+  \end{itemize}
+
+  \textbf{3. 匹配过程分析：}
+  \begin{lstlisting}
+字符串：'a bc abc abbb abbbbbca'
+模式：'ab*'
+
+匹配过程：
+位置0: 'a' -> 匹配'a'（0个b）✓
+位置2: 'b' -> 不匹配（没有前导'a'）
+位置3: 'c' -> 不匹配
+位置5: 'a' -> 开始匹配
+位置6: 'b' -> 匹配'ab'（1个b）✓
+位置7: 'c' -> 结束匹配
+位置9: 'a' -> 开始匹配
+位置10-12: 'bbb' -> 匹配'abbb'（3个b）✓
+位置14: 'a' -> 开始匹配
+位置15-18: 'bbbb' -> 匹配'abbbb'（4个b）✓
+位置19: 'b' -> 继续匹配但遇到'c'
+位置20: 'c' -> 结束匹配
+位置21: 'a' -> 匹配'a'（0个b）✓
+
+结果：['a', 'ab', 'abbb', 'abbbb', 'a']
+  \end{lstlisting}
+
+  \textbf{4. 正则表达式语法详解：}
+
+  \textbf{4.1 基本字符类：}
+  \begin{lstlisting}
+.     # 匹配任意字符（除换行符）
+\d    # 匹配数字[0-9]
+\D    # 匹配非数字[^0-9]
+\w    # 匹配字母、数字、下划线[a-zA-Z0-9_]
+\W    # 匹配非字母数字下划线[^a-zA-Z0-9_]
+\s    # 匹配空白字符（空格、制表符、换行符等）
+\S    # 匹配非空白字符
+  \end{lstlisting}
+
+  \textbf{4.2 自定义字符类：}
+  \begin{lstlisting}
+[abc]     # 匹配a、b或c中的任意一个
+[a-z]     # 匹配任意小写字母
+[A-Z]     # 匹配任意大写字母
+[0-9]     # 匹配任意数字（等同于\d）
+[a-zA-Z]  # 匹配任意字母
+[^abc]    # 匹配除a、b、c外的任意字符（取反）
+[a-z0-9]  # 匹配小写字母或数字
+  \end{lstlisting}
+
+  \textbf{4.3 量词（重复次数）：}
+  \begin{lstlisting}
+*         # 匹配前面的字符0次或多次
++         # 匹配前面的字符1次或多次
+?         # 匹配前面的字符0次或1次
+{n}       # 匹配前面的字符恰好n次
+{n,}      # 匹配前面的字符至少n次
+{n,m}     # 匹配前面的字符n到m次
+*?        # 非贪婪匹配0次或多次
++?        # 非贪婪匹配1次或多次
+??        # 非贪婪匹配0次或1次
+  \end{lstlisting}
+
+  \textbf{4.4 锚点（位置匹配）：}
+  \begin{lstlisting}
+^         # 匹配字符串开头
+$         # 匹配字符串结尾
+\b        # 匹配单词边界
+\B        # 匹配非单词边界
+\A        # 匹配字符串绝对开头
+\Z        # 匹配字符串绝对结尾
+  \end{lstlisting}
+
+  \textbf{4.5 分组和选择：}
+  \begin{lstlisting}
+()        # 分组，创建捕获组
+(?:...)   # 非捕获组
+|         # 或者（选择）
+\1, \2    # 反向引用第1、2个捕获组
+(?P<name>...)  # 命名捕获组
+(?P=name)      # 引用命名捕获组
+  \end{lstlisting}
+
+  \textbf{4.6 特殊字符转义：}
+  \begin{lstlisting}
+\.        # 匹配字面意思的点号
+\*        # 匹配字面意思的星号
+\+        # 匹配字面意思的加号
+\?        # 匹配字面意思的问号
+\[        # 匹配字面意思的左方括号
+\]        # 匹配字面意思的右方括号
+\\        # 匹配字面意思的反斜杠
+\^        # 匹配字面意思的插入符
+\$        # 匹配字面意思的美元符号
+  \end{lstlisting}
+
+  \textbf{4.7 实用示例：}
+  \begin{lstlisting}
+# 匹配邮箱
+r'\w+@\w+\.\w+'
+
+# 匹配手机号（简单版）
+r'1[3-9]\d{9}'
+
+# 匹配IP地址
+r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
+
+# 匹配HTML标签
+r'<[^>]+>'
+
+# 匹配中文字符
+r'[\u4e00-\u9fa5]+'
+
+# 匹配URL
+r'https?://[^\s]+'
+  \end{lstlisting}
+
+  \textbf{5. re模块常用函数：}
+  \begin{lstlisting}
+import re
+
+text = 'Python 3.8 is great!'
+
+# 查找所有匹配
+re.findall(r'\d+', text)        # ['3', '8']
+
+# 搜索第一个匹配
+match = re.search(r'\d+', text)  # 返回Match对象或None
+
+# 从字符串开头匹配
+match = re.match(r'Python', text)  # 匹配成功
+
+# 替换
+result = re.sub(r'\d+', 'X', text)  # 'Python X.X is great!'
+
+# 分割
+parts = re.split(r'\s+', text)   # ['Python', '3.8', 'is', 'great!']
+  \end{lstlisting}
+
+  \textbf{6. 贪婪匹配vs非贪婪匹配：}
+  \begin{lstlisting}
+text = 'abbbbbb'
+
+# 贪婪匹配（默认）
+re.findall('ab*', text)      # ['abbbbbb'] - 匹配尽可能多的b
+
+# 非贪婪匹配
+re.findall('ab*?', text)     # ['a'] - 匹配尽可能少的b
+  \end{lstlisting}
+
+  \textbf{知识点总结：}
+  \begin{itemize}
+    \item 理解量词的含义和用法
+    \item 掌握正则表达式的匹配原理
+    \item 熟悉re模块的常用函数
+    \item 区分贪婪匹配和非贪婪匹配
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第16题}
+以下不能创建一个元组的语句是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item tup1 = ()
+  \item tup2 = 1,
+  \item tup3 = (1)
+  \item dict4 = tuple("123")
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：C
+
+  各选项分析：
+  \begin{itemize}
+    \item A选项：tup1 = () 创建一个空元组，正确
+    \item B选项：tup2 = 1, 创建包含一个元素的元组，逗号是关键，正确
+    \item C选项：tup3 = (1) 仅仅是给数字1加括号，结果是整数1，不是元组
+    \item D选项：tuple("123") 将字符串转换为元组('1', '2', '3')，正确
+  \end{itemize}
+
+  知识点：
+  \begin{itemize}
+    \item 创建元组时，逗号是关键标识符，不是括号
+    \item 单个元素的元组必须在元素后加逗号：(1,) 或 1,
+    \item 空元组可以用 () 或 tuple() 创建
+    \item tuple()函数可以将其他可迭代对象转换为元组
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第17题}
+在PyCharm中运行整个程序的默认快捷键是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item Shift+F10
+  \item Ctrl+F10
+  \item Shift+Ctrl+F10
+  \item Shift+Ctrl+Enter
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：A
+
+  PyCharm常用快捷键：
+  \begin{itemize}
+    \item Shift+F10：运行整个程序（Run）
+    \item Ctrl+F10：运行当前文件
+    \item Shift+Ctrl+F10：运行当前光标所在的配置
+    \item Shift+Ctrl+Enter：完成当前语句
+  \end{itemize}
+
+  其他常用快捷键：
+  \begin{itemize}
+    \item Shift+F9：调试程序（Debug）
+    \item Ctrl+Shift+F9：调试当前文件
+    \item F8：单步执行（调试时）
+    \item F9：继续执行（调试时）
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第18题}
+下面的语句中（）用来把路径path设置为默认路径
+
+\begin{enumerate}[label=\Alph*.]
+  \item os.chdir(path)
+  \item os.mkdir(path)
+  \item os.isdir(path)
+  \item os.listdir(path)
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：A
+
+  os模块常用函数说明：
+  \begin{itemize}
+    \item os.chdir(path)：改变当前工作目录到指定路径，相当于cd命令
+    \item os.mkdir(path)：创建一个新目录
+    \item os.isdir(path)：判断路径是否为目录，返回True或False
+    \item os.listdir(path)：返回指定目录下的文件和目录列表
+  \end{itemize}
+
+  其他相关函数：
+  \begin{itemize}
+    \item os.getcwd()：获取当前工作目录
+    \item os.makedirs(path)：递归创建目录
+    \item os.path.exists(path)：判断路径是否存在
+    \item os.path.join()：连接路径
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第19题}
+在Python中，下列说法正确的是（）
+
+\begin{enumerate}[label=\Alph*.]
+  \item 0xad是合法的十六进制数字表示形式
+  \item 3+4j不是合法的Python表达式
+  \item 可以使用if作为变量名
+  \item 0o12f是合法的八进制数字
+\end{enumerate}
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+
+  \textbf{\color{red}【笔记】}
+
+  正确答案：A
+
+  各选项分析：
+  \begin{itemize}
+    \item A选项：0xad是合法的十六进制数字，0x前缀表示十六进制，ad是有效的hex数字
+    \item B选项：3+4j是合法的复数表达式，j表示虚数单位
+    \item C选项：if是Python保留字（关键字），不能用作变量名
+    \item D选项：0o12f不合法，八进制数字只能包含0-7，f不是有效的八进制数字
+  \end{itemize}
+
+  Python数字表示形式：
+  \begin{itemize}
+    \item 十进制：直接写数字，如123
+    \item 二进制：0b前缀，如0b1010
+    \item 八进制：0o前缀，如0o777（只能包含0-7）
+    \item 十六进制：0x前缀，如0xff（可包含0-9和a-f）
+    \item 复数：实部+虚部j，如3+4j
+  \end{itemize}
+
+\end{mdframed}

@@ -1,0 +1,386 @@
+\section{代码编写题}
+
+\subsection{第1题}
+编程实现，由用户输入一个不多于5位的正整数，要求求出它是几位数以及逆序打印出该数。
+
+\begin{mdframed}
+  \textbf{\color{red}【笔记】}
+
+    \begin{lstlisting}
+n = int(input())
+s = str(n)  # 数字转换成字符串
+print(len(s))  # 输出长度
+print(s[::-1])  # 输出反转后的字符串
+
+    \end{lstlisting}
+\end{mdframed}
+
+\subsection{第2题}
+循环从用户处获得一组数据，直到用户直接输入回车退出，打印输出所有数据的和。本题不考虑输入异常情况。
+
+\begin{mdframed}
+  \textbf{\color{red}【笔记】}
+
+    \begin{lstlisting}
+n = input()
+tot = 0
+
+while n:  # 空字符串为False
+    tot += eval(n)  # 转换为int类型并累加
+    n = input()  # 再输入
+
+print(tot)
+    \end{lstlisting}
+\end{mdframed}
+
+\subsection{第3题}
+假设os模块已导入，那么请写出C:$\backslash$Windows文件夹中（无需遍历该文件夹下的子文件夹）所有扩展名为.exe的文件
+
+\begin{mdframed}
+  \textbf{\color{red}【笔记】}
+
+  \textbf{方法一：使用os.listdir()和字符串方法}
+  \begin{lstlisting}
+import os
+
+path = r'C:\Windows'
+files = os.listdir(path)
+
+for file in files:
+    if file.endswith('.exe'):
+        print(file)
+  \end{lstlisting}
+
+  \textbf{方法二：使用列表推导式}
+  \begin{lstlisting}
+import os
+
+path = r'C:\Windows'
+exe_files = [f for f in os.listdir(path) if f.endswith('.exe')]
+for file in exe_files:
+    print(file)
+  \end{lstlisting}
+
+  \textbf{方法三：使用os.path.splitext()}
+  \begin{lstlisting}
+import os
+
+path = r'C:\Windows'
+for file in os.listdir(path):
+    name, ext = os.path.splitext(file)
+    if ext.lower() == '.exe':
+        print(file)
+  \end{lstlisting}
+
+  \textbf{代码解释：}
+  \begin{itemize}
+    \item \texttt{r'C:\\Windows'}：使用原始字符串避免转义问题
+    \item \texttt{os.listdir(path)}：列出指定目录下的所有文件和文件夹
+    \item \texttt{file.endswith('.exe')}：判断文件名是否以.exe结尾
+    \item \texttt{os.path.splitext()}：分离文件名和扩展名
+    \item \texttt{ext.lower()}：转换为小写，增加匹配的容错性
+  \end{itemize}
+
+  \textbf{注意事项：}
+  \begin{itemize}
+    \item 此代码只列出当前目录的文件，不会递归遍历子目录
+    \item 需要有访问C:\\Windows目录的权限
+    \item 实际使用时可能需要异常处理
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第4题}
+在游戏应用中，经常会判断鼠标是否点击了某个人物或道具，本题将模拟此场景，编程实现判断某个点是否在某个矩形内，具体要求如下：
+
+\textbf{(1)} 实现Point类，类中有私有属性\_\_x，\_\_y，代表鼠标的坐标，在类中实现方法get\_x，set\_x，get\_y，set\_y，使其可以分别访问相应属性。(4分)
+
+\textbf{(2)} 实现Rectangle类，类中有私有属性x，y，代表矩形的左上角坐标，私有属性width和height，代表矩形的宽度和高度。(4分)
+
+\textbf{(3)} 在Rectangle类中实现方法contain，判断某个点(Point类的对象)是否包含在此矩形中(4分)
+
+\textbf{测试代码如下：}
+\begin{lstlisting}
+p1 = Point(20, 25)  # 点p1的坐标为x=20, y=25
+# 新建矩形对象rect，其左上角坐标x=10、y=15，矩形的宽度50、高度60
+rect = Rectangle(10, 15, 50, 60)
+print(rect.contain(p1))
+
+p1.set_x(80)  # 设置点p1的x坐标为80
+p1.set_y(90)  # 设置点p1的y坐标为90
+print(rect.contain(p1))
+\end{lstlisting}
+
+\textbf{输出结果：}
+\begin{lstlisting}
+True
+False
+\end{lstlisting}
+
+\begin{mdframed}
+  \textbf{\color{red}【笔记】}
+
+  \textbf{完整代码实现：}
+  \begin{lstlisting}
+class Point:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+    def set_x(self, x):
+        self.__x = x
+
+    def set_y(self, y):
+        self.__y = y
+
+    def get_x(self):
+        return self.__x
+
+    def get_y(self):
+        return self.__y
+
+class Rectangle:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def contain(self, point):
+        if self.x <= point.get_x() <= self.x + self.width \
+        and self.y <= point.get_y() <= self.y + self.height:
+            return True
+        return False
+  \end{lstlisting}
+
+  \textbf{Python类详解：}
+
+  \textbf{1. 类的基本概念：}
+  \begin{itemize}
+    \item 类（Class）是对象的模板，定义了对象的属性和方法
+    \item 对象（Object）是类的实例，具有类定义的属性和行为
+    \item 使用关键字\texttt{class}定义类，类名通常采用驼峰命名法
+  \end{itemize}
+
+  \textbf{2. 构造函数\_\_init\_\_：}
+  \begin{itemize}
+    \item \texttt{\_\_init\_\_}是特殊方法，用于初始化对象
+    \item 创建对象时自动调用，相当于其他语言的构造函数
+    \item \texttt{self}参数代表对象本身，必须是第一个参数
+    \item 可以接收参数来初始化对象的属性
+  \end{itemize}
+
+  \textbf{3. 属性访问控制：}
+  \begin{lstlisting}
+# 公有属性：可以直接访问
+self.x = x          # 公有属性
+
+# 私有属性：不能直接从外部访问
+self.__x = x        # 私有属性（双下划线开头）
+
+# 访问示例
+p = Point(10, 20)
+print(p.x)          # 如果x是公有属性，可以直接访问
+# print(p.__x)      # 错误！私有属性不能直接访问
+print(p.get_x())    # 通过getter方法访问私有属性
+  \end{lstlisting}
+
+  \textbf{4. Getter和Setter方法：}
+  \begin{itemize}
+    \item Getter方法：用于获取私有属性的值
+    \item Setter方法：用于设置私有属性的值
+    \item 提供了对私有属性的受控访问
+    \item 可以在方法中添加验证逻辑
+  \end{itemize}
+
+  \textbf{5. 方法定义和调用：}
+  \begin{lstlisting}
+# 方法定义
+def method_name(self, parameters):
+    # 方法体
+    return value
+
+# 方法调用
+obj = ClassName()
+result = obj.method_name(arguments)
+  \end{lstlisting}
+
+  \textbf{6. 代码逻辑分析：}
+
+  \textbf{Point类：}
+  \begin{itemize}
+    \item 私有属性\texttt{\_\_x}和\texttt{\_\_y}存储坐标
+    \item 提供getter和setter方法访问坐标值
+    \item 封装了坐标点的基本操作
+  \end{itemize}
+
+  \textbf{Rectangle类：}
+  \begin{itemize}
+    \item 公有属性存储矩形的位置和尺寸信息
+    \item \texttt{contain}方法判断点是否在矩形内部
+    \item 判断条件：\texttt{x <= point\_x <= x + width}且\texttt{y <= point\_y <= y + height}
+  \end{itemize}
+
+  \textbf{7. 面向对象编程优势：}
+  \begin{itemize}
+    \item \textbf{封装}：将数据和操作封装在类中
+    \item \textbf{抽象}：隐藏实现细节，只暴露必要接口
+    \item \textbf{重用性}：类可以被多次实例化使用
+    \item \textbf{维护性}：便于代码的维护和扩展
+  \end{itemize}
+
+  \textbf{8. 类装饰器详解：}
+
+  \textbf{8.1 @property装饰器：}
+  \begin{itemize}
+    \item @property将方法转换为属性，提供更优雅的访问方式
+    \item 可以像访问属性一样调用方法，无需加括号
+    \item 提供了getter、setter、deleter的完整支持
+    \item 比传统的get/set方法更加Pythonic
+  \end{itemize}
+
+  \textbf{8.2 使用@property重写Point类：}
+  \begin{lstlisting}
+class Point:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+    @property
+    def x(self):
+        """获取x坐标"""
+        return self.__x
+
+    @x.setter
+    def x(self, value):
+        """设置x坐标，可以添加验证"""
+        if not isinstance(value, (int, float)):
+            raise TypeError("坐标必须是数字")
+        self.__x = value
+
+    @x.deleter
+    def x(self):
+        """删除x坐标"""
+        print("删除x坐标")
+        del self.__x
+
+    @property
+    def y(self):
+        """获取y坐标"""
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """设置y坐标"""
+        if not isinstance(value, (int, float)):
+            raise TypeError("坐标必须是数字")
+        self.__y = value
+
+    @property
+    def distance_from_origin(self):
+        """计算到原点的距离（只读属性）"""
+        return (self.__x ** 2 + self.__y ** 2) ** 0.5
+  \end{lstlisting}
+
+  \textbf{8.3 @property的使用示例：}
+  \begin{lstlisting}
+# 创建点对象
+p = Point(3, 4)
+
+# 使用@property装饰的方法，像属性一样访问
+print(p.x)                    # 输出: 3 (调用getter)
+print(p.y)                    # 输出: 4 (调用getter)
+print(p.distance_from_origin) # 输出: 5.0 (只读属性)
+
+# 使用setter设置值
+p.x = 10                      # 调用setter
+p.y = 20                      # 调用setter
+
+# 验证功能
+try:
+    p.x = "invalid"           # 触发TypeError异常
+except TypeError as e:
+    print(e)                  # 输出: 坐标必须是数字
+
+# 删除属性
+del p.x                       # 调用deleter
+  \end{lstlisting}
+
+  \textbf{8.4 传统方法vs @property对比：}
+  \begin{lstlisting}
+# 传统getter/setter方法
+point1 = Point(10, 20)
+print(point1.get_x())         # 需要调用方法
+point1.set_x(30)              # 需要调用方法
+
+# 使用@property装饰器
+point2 = Point(10, 20)
+print(point2.x)               # 像访问属性一样
+point2.x = 30                 # 像设置属性一样
+  \end{lstlisting}
+
+  \textbf{8.5 @property的优势：}
+  \begin{itemize}
+    \item \textbf{简洁性}：访问语法更加直观，无需get/set前缀
+    \item \textbf{封装性}：可以在getter/setter中添加验证逻辑
+    \item \textbf{兼容性}：可以将普通属性升级为property而不破坏接口
+    \item \textbf{只读属性}：可以创建计算属性（如distance\_from\_origin）
+    \item \textbf{延迟计算}：属性值可以在访问时动态计算
+  \end{itemize}
+
+  \textbf{8.6 其他常用装饰器：}
+  \begin{lstlisting}
+class MyClass:
+    @staticmethod
+    def static_method():
+        """静态方法，不需要self参数，不依赖实例"""
+        return "这是静态方法"
+
+    @classmethod
+    def class_method(cls):
+        """类方法，接收cls参数，可以访问类属性"""
+        return f"这是{cls.__name__}的类方法"
+
+    @property
+    def read_only_prop(self):
+        """只读属性"""
+        return "只读值"
+
+# 使用示例
+obj = MyClass()
+print(MyClass.static_method())    # 直接通过类调用
+print(MyClass.class_method())     # 通过类调用类方法
+print(obj.read_only_prop)         # 访问只读属性
+  \end{lstlisting}
+
+  \textbf{8.7 实际应用场景：}
+  \begin{itemize}
+    \item \textbf{数据验证}：在setter中验证输入数据的有效性
+    \item \textbf{计算属性}：根据其他属性动态计算值
+    \item \textbf{缓存机制}：在属性中实现计算结果的缓存
+    \item \textbf{兼容性}：将直接属性访问升级为方法调用
+    \item \textbf{日志记录}：在属性访问时记录日志
+  \end{itemize}
+
+  \textbf{9. 扩展知识：}
+  \begin{lstlisting}
+# 类属性和实例属性
+class MyClass:
+    class_var = "类属性"    # 类属性，所有实例共享
+
+    def __init__(self, value):
+        self.instance_var = value  # 实例属性，每个实例独有
+
+# 特殊方法（魔术方法）
+class Point:
+    def __str__(self):
+        return f"Point({self.__x}, {self.__y})"
+
+    def __repr__(self):
+        return f"Point({self.__x}, {self.__y})"
+
+    def __eq__(self, other):
+        return self.__x == other.__x and self.__y == other.__y
+  \end{lstlisting}
+
+\end{mdframed}

@@ -1,0 +1,309 @@
+\section{判断题}
+
+\subsection{第1题}
+定义函数时，即便该函数不需要接收任何参数，也必须保留一对空的圆括号来表示这是一个函数。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：正确 (T)
+
+  解释：
+  \begin{itemize}
+    \item Python函数定义语法：\texttt{def function\_name():}
+    \item 即使函数不需要参数，圆括号 \texttt{()} 也是必须的
+    \item 圆括号是函数定义的语法要求，用于区分函数和变量
+    \item 示例：\texttt{def hello(): print("Hello")}
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第2题}
+已知\texttt{ls=[2, 4, 6]}，那么执行语句\texttt{ls.append(8)}之后，ls的内存地址不变。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：正确 (T)
+
+  解释：
+  \begin{itemize}
+    \item \texttt{append()}方法是原地修改操作（in-place operation）
+    \item 列表对象本身不会被重新创建，只是在原有内存空间中添加新元素
+    \item 可以用\texttt{id()}函数验证：\texttt{id(ls)}在append前后相同
+    \item 类似的原地修改方法还有：\texttt{extend()}, \texttt{insert()}, \texttt{remove()}等
+  \end{itemize}
+
+  对比：重新赋值操作如\texttt{ls = ls + [8]}会创建新的列表对象，内存地址会改变。
+
+\end{mdframed}
+
+\subsection{第3题}
+continue语句在一旦在循环结构里被执行，将使得当前循环的整个循环提前结束。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：错误 (F)
+
+  解释：
+  \begin{itemize}
+    \item \texttt{continue}语句只是跳过当前循环迭代，继续下一次迭代
+    \item \texttt{continue}不会终止整个循环，循环仍会继续执行
+    \item \texttt{break}语句才会提前终止整个循环
+  \end{itemize}
+
+  示例对比：
+  \begin{itemize}
+    \item 使用\texttt{continue}：跳过满足条件的迭代，继续其他迭代
+    \item 使用\texttt{break}：一旦满足条件就立即退出整个循环
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第4题}
+\texttt{a,b=b,a}可以实现a和b值的交换。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：正确 (T)
+
+  解释：
+  \begin{itemize}
+    \item Python支持多重赋值（multiple assignment）
+    \item 右侧\texttt{b,a}先被打包成元组\texttt{(b,a)}
+    \item 然后元组被解包赋值给左侧的\texttt{a,b}
+    \item 这种方式简洁高效，无需临时变量
+  \end{itemize}
+
+  传统交换方式对比：
+  \begin{itemize}
+    \item 传统方式：\texttt{temp=a; a=b; b=temp}（需要临时变量）
+    \item Python方式：\texttt{a,b=b,a}（一行代码完成）
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第5题}
+函数是封装了一些独立的功能，可以直接调用，Python内置了许多函数，同时可以自建函数来使用。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：正确 (T)
+
+  解释：
+  \begin{itemize}
+    \item 函数是代码重用和模块化的基础
+    \item 函数封装特定功能，提高代码可读性和可维护性
+    \item Python内置函数如：\texttt{print()}, \texttt{len()}, \texttt{max()}, \texttt{min()}等
+    \item 用户可以使用\texttt{def}关键字自定义函数
+  \end{itemize}
+
+  函数的优点：
+  \begin{itemize}
+    \item 代码重用：避免重复编写相同代码
+    \item 模块化：将复杂问题分解为小问题
+    \item 易于测试和调试
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第6题}
+使用内置函数\texttt{open()}且以'w'模式打开的文件，文件指针默认指向文件尾。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：错误 (F)
+
+  解释：
+  \begin{itemize}
+    \item 'w'模式（写入模式）文件指针指向文件开头
+    \item 'w'模式会清空原文件内容，从头开始写入
+    \item 'a'模式（追加模式）文件指针才指向文件尾
+  \end{itemize}
+
+  文件打开模式对比：
+  \begin{itemize}
+    \item 'r'：只读模式，指针在文件开头
+    \item 'w'：写入模式，清空文件，指针在文件开头
+    \item 'a'：追加模式，指针在文件末尾
+    \item 'r+'：读写模式，指针在文件开头
+  \end{itemize}
+
+\end{mdframed}
+
+\subsection{第7题}
+利用\texttt{print()}格式化输出，\verb|{2:f}|能够控制浮点数的小数点后保留两位。（\quad）
+
+\begin{mdframed}[linewidth=1pt, linecolor=black]
+  \textbf{\color{red}【笔记】}
+
+  正确答案：错误 (F)
+
+  解释：
+  \begin{itemize}
+    \item \verb|{2:f}|不能控制小数点后保留两位
+    \item 2表示参数索引（第3个参数，从0开始计数）
+    \item f表示浮点数格式，但没有指定精度
+    \item 要保留两位小数需要使用\verb|{2:.2f}|
+  \end{itemize}
+
+  正确的格式化语法：
+  \begin{itemize}
+    \item \verb|{2:.2f}|：第3个参数保留2位小数
+    \item \verb|{:.2f}|：当前位置参数保留2位小数
+    \item \verb|{2:f}|：第3个参数浮点数格式，但精度由系统默认决定
+  \end{itemize}
+
+  \textbf{Python print()格式化输出详解：}
+
+  \textbf{1. 基本格式化语法}
+  \begin{itemize}
+    \item 基本形式：\verb|print("格式字符串".format(参数))|
+    \item f-string形式：\verb|print(f"格式字符串{变量}")| （Python 3.6+）
+    \item \%格式化：\verb|print("格式字符串" % 参数)| （较老的方式）
+    \end{itemize}
+
+    \textbf{2. 格式说明符详解}
+    \begin{itemize}
+      \item \verb|{索引:格式说明符}|
+      \item 索引：0, 1, 2... 或省略（按顺序）
+      \item 格式说明符：[填充字符][对齐][宽度][.精度][类型]
+    \end{itemize}
+
+    \textbf{3. 数字格式化类型}
+    \begin{itemize}
+      \item \texttt{d}：十进制整数
+      \item \texttt{f}：浮点数（默认6位小数）
+      \item \texttt{.nf}：浮点数保留n位小数
+      \item \texttt{e}：科学计数法
+      \item \texttt{g}：自动选择f或e格式
+      \item \texttt{o}：八进制，\texttt{x}：十六进制
+    \end{itemize}
+
+    \textbf{4. 字符串格式化}
+    \begin{itemize}
+      \item \texttt{s}：字符串格式
+      \item \verb|{:10s}|：字符串宽度10，左对齐
+      \item \verb|{:>10s}|：右对齐，\verb|{:^10s}|：居中对齐
+      \item \verb|{:*^10s}|：用*填充的居中对齐
+    \end{itemize}
+
+    \textbf{5. 格式化示例}
+    \begin{itemize}
+      \item \verb|print("{:.2f}".format(3.14159))| → 3.14
+      \item \verb|print("{:10.2f}".format(3.14))| → \quad\quad\quad 3.14
+      \item \verb|print("{:0>5d}".format(42))| → 00042
+      \item \verb|print(f"{name:^10s}")| → 变量name居中显示
+    \end{itemize}
+
+  \end{mdframed}
+
+  \subsection{第8题}
+  定义类时实现了\texttt{\_\_pow\_\_()}方法，该类对象即可支持运算符**。（\quad）
+
+  \begin{mdframed}[linewidth=1pt, linecolor=black]
+    \textbf{\color{red}【笔记】}
+
+    正确答案：正确 (T)
+
+    解释：
+    \begin{itemize}
+      \item \texttt{\_\_pow\_\_()}是Python的魔法方法（magic method）
+      \item 实现该方法后，类对象可以使用**运算符进行幂运算
+      \item 调用\texttt{obj ** n}等价于调用\texttt{obj.\_\_pow\_\_(n)}
+    \end{itemize}
+
+    其他常用魔法方法：
+    \begin{itemize}
+      \item \texttt{\_\_add\_\_()}：支持+运算符
+      \item \texttt{\_\_sub\_\_()}：支持-运算符
+      \item \texttt{\_\_mul\_\_()}：支持*运算符
+      \item \texttt{\_\_str\_\_()}：支持字符串转换
+    \end{itemize}
+
+  \end{mdframed}
+
+  \subsection{第9题}
+  通过对象和类名都可以调用类方法和静态方法。（\quad）
+
+  \begin{mdframed}[linewidth=1pt, linecolor=black]
+    \textbf{\color{red}【笔记】}
+
+    正确答案：正确 (T)
+
+    解释：
+    \begin{itemize}
+      \item 类方法（\texttt{@classmethod}）：可通过类名和对象调用
+      \item 静态方法（\texttt{@staticmethod}）：可通过类名和对象调用
+      \item 这两种方法不依赖于特定的实例状态
+    \end{itemize}
+
+    方法调用方式对比：
+    \begin{itemize}
+      \item 实例方法：只能通过对象调用，需要\texttt{self}参数
+      \item 类方法：类名.方法() 或 对象.方法()，接收\texttt{cls}参数
+      \item 静态方法：类名.方法() 或 对象.方法()，无特殊参数要求
+    \end{itemize}
+
+    推荐做法：类方法和静态方法优先使用类名调用，语义更清晰。
+
+    \textbf{类方法与静态方法详细区别：}
+
+    \textbf{1. 定义方式}
+    \begin{itemize}
+      \item 类方法：使用\texttt{@classmethod}装饰器
+      \item 静态方法：使用\texttt{@staticmethod}装饰器
+    \end{itemize}
+
+    \textbf{2. 参数区别}
+    \begin{itemize}
+      \item 类方法：第一个参数必须是\texttt{cls}（代表类本身）
+      \item 静态方法：没有特殊的第一个参数要求
+      \item 实例方法：第一个参数必须是\texttt{self}（代表实例本身）
+    \end{itemize}
+
+    \textbf{3. 访问权限}
+    \begin{itemize}
+      \item 类方法：可以访问类属性，不能直接访问实例属性
+      \item 静态方法：不能访问类属性和实例属性
+      \item 实例方法：可以访问类属性和实例属性
+    \end{itemize}
+
+    \textbf{4. 使用场景}
+    \begin{itemize}
+      \item 类方法：替代构造函数、操作类属性、工厂方法
+      \item 静态方法：与类相关但不需要访问类/实例数据的工具函数
+      \item 实例方法：操作具体实例的数据和行为
+    \end{itemize}
+
+    \textbf{5. 代码示例}
+    \begin{lstlisting}[linewidth=\textwidth, breaklines=true, numbers=none]
+class MyClass:
+    class_var = "类属性"
+
+    def __init__(self, value):
+        self.instance_var = value
+
+    @classmethod
+    def class_method(cls):
+        return f"访问: {cls.class_var}"
+
+    @staticmethod
+    def static_method():
+        return "静态方法"
+
+    def instance_method(self):
+        return f"实例: {self.instance_var}"
+
+# 调用方式
+MyClass.class_method()    # 类方法
+MyClass.static_method()   # 静态方法
+obj = MyClass("值")
+obj.class_method()        # 对象调用类方法
+obj.static_method()       # 对象调用静态方法
+    \end{lstlisting}
+  \end{mdframed}
