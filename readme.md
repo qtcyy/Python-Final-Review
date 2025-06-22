@@ -3,3 +3,5 @@
 ## 复习内容
 
 - 复习卷知识总结
+
+**PDF 文件在/page/main/main.pdf**
