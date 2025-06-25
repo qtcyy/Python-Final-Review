@@ -88,6 +88,252 @@ for file in os.listdir(path):
     \item 实际使用时可能需要异常处理
   \end{itemize}
 
+  \textbf{os模块的常用函数介绍}
+
+  \textbf{1. 目录操作函数：}
+  \begin{itemize}
+    \item \textbf{os.getcwd()}：获取当前工作目录
+    \begin{lstlisting}
+import os
+current_dir = os.getcwd()
+print(current_dir)  # 输出当前工作目录的绝对路径
+    \end{lstlisting}
+
+    \item \textbf{os.chdir(path)}：改变当前工作目录
+    \begin{lstlisting}
+os.chdir('/home/user/documents')  # Linux/Mac
+os.chdir(r'C:\Users\Documents')   # Windows
+    \end{lstlisting}
+
+    \item \textbf{os.listdir(path)}：列出指定目录下的文件和子目录
+    \begin{lstlisting}
+files = os.listdir('.')  # 列出当前目录
+files = os.listdir('/tmp')  # 列出/tmp目录
+    \end{lstlisting}
+
+    \item \textbf{os.mkdir(path)}：创建单级目录
+    \begin{lstlisting}
+os.mkdir('new_folder')  # 在当前目录创建new_folder
+os.mkdir('/tmp/test')   # 在/tmp下创建test目录
+    \end{lstlisting}
+
+    \item \textbf{os.makedirs(path)}：递归创建多级目录
+    \begin{lstlisting}
+os.makedirs('dir1/dir2/dir3')  # 创建多级目录
+os.makedirs('dir1/dir2', exist_ok=True)  # 如果存在则不报错
+    \end{lstlisting}
+
+    \item \textbf{os.rmdir(path)}：删除空目录
+    \begin{lstlisting}
+os.rmdir('empty_folder')  # 只能删除空目录
+    \end{lstlisting}
+
+    \item \textbf{os.removedirs(path)}：递归删除空目录
+    \begin{lstlisting}
+os.removedirs('dir1/dir2/dir3')  # 从内到外删除空目录
+    \end{lstlisting}
+  \end{itemize}
+
+  \textbf{2. 文件操作函数：}
+  \begin{itemize}
+    \item \textbf{os.remove(path)}：删除文件
+    \begin{lstlisting}
+os.remove('test.txt')  # 删除test.txt文件
+    \end{lstlisting}
+
+    \item \textbf{os.rename(src, dst)}：重命名文件或目录
+    \begin{lstlisting}
+os.rename('old_name.txt', 'new_name.txt')  # 重命名文件
+os.rename('old_dir', 'new_dir')  # 重命名目录
+    \end{lstlisting}
+
+    \item \textbf{os.stat(path)}：获取文件或目录的状态信息
+    \begin{lstlisting}
+stat_info = os.stat('file.txt')
+print(stat_info.st_size)  # 文件大小（字节）
+print(stat_info.st_mtime)  # 最后修改时间
+    \end{lstlisting}
+  \end{itemize}
+
+  \textbf{3. os.path模块（路径操作）：}
+  \begin{itemize}
+    \item \textbf{os.path.exists(path)}：判断路径是否存在
+    \begin{lstlisting}
+if os.path.exists('file.txt'):
+    print('文件存在')
+    \end{lstlisting}
+
+    \item \textbf{os.path.isfile(path)}：判断是否为文件
+    \begin{lstlisting}
+if os.path.isfile('test.txt'):
+    print('这是一个文件')
+    \end{lstlisting}
+
+    \item \textbf{os.path.isdir(path)}：判断是否为目录
+    \begin{lstlisting}
+if os.path.isdir('/home'):
+    print('这是一个目录')
+    \end{lstlisting}
+
+    \item \textbf{os.path.join(path1, path2, ...)}：连接路径
+    \begin{lstlisting}
+# 跨平台的路径连接
+path = os.path.join('home', 'user', 'file.txt')
+# Windows: home\user\file.txt
+# Linux/Mac: home/user/file.txt
+    \end{lstlisting}
+
+    \item \textbf{os.path.split(path)}：分割路径和文件名
+    \begin{lstlisting}
+dir_name, file_name = os.path.split('/home/user/file.txt')
+# dir_name = '/home/user'
+# file_name = 'file.txt'
+    \end{lstlisting}
+
+    \item \textbf{os.path.splitext(path)}：分离文件名和扩展名
+    \begin{lstlisting}
+name, ext = os.path.splitext('document.pdf')
+# name = 'document'
+# ext = '.pdf'
+    \end{lstlisting}
+
+    \item \textbf{os.path.basename(path)}：获取文件名
+    \begin{lstlisting}
+file_name = os.path.basename('/home/user/file.txt')
+# file_name = 'file.txt'
+    \end{lstlisting}
+
+    \item \textbf{os.path.dirname(path)}：获取目录名
+    \begin{lstlisting}
+dir_name = os.path.dirname('/home/user/file.txt')
+# dir_name = '/home/user'
+    \end{lstlisting}
+
+    \item \textbf{os.path.abspath(path)}：获取绝对路径
+    \begin{lstlisting}
+abs_path = os.path.abspath('file.txt')
+# 返回file.txt的绝对路径
+    \end{lstlisting>
+
+    \item \textbf{os.path.getsize(path)}：获取文件大小
+    \begin{lstlisting}
+size = os.path.getsize('file.txt')  # 返回字节数
+    \end{lstlisting}
+  \end{itemize}
+
+  \textbf{4. 环境变量操作：}
+  \begin{itemize}
+    \item \textbf{os.environ}：环境变量字典
+    \begin{lstlisting}
+# 获取环境变量
+home = os.environ.get('HOME')  # Linux/Mac
+home = os.environ.get('USERPROFILE')  # Windows
+
+# 设置环境变量
+os.environ['MY_VAR'] = 'value'
+    \end{lstlisting}
+
+    \item \textbf{os.getenv(key, default=None)}：获取环境变量
+    \begin{lstlisting}
+path = os.getenv('PATH', '')  # 获取PATH，不存在返回空字符串
+    \end{lstlisting}
+  \end{itemize}
+
+  \textbf{5. 系统相关：}
+  \begin{itemize}
+    \item \textbf{os.name}：操作系统名称
+    \begin{lstlisting}
+print(os.name)  # 'posix'(Linux/Mac) 或 'nt'(Windows)
+    \end{lstlisting}
+
+    \item \textbf{os.system(command)}：执行系统命令
+    \begin{lstlisting}
+os.system('ls -la')  # Linux/Mac
+os.system('dir')     # Windows
+    \end{lstlisting}
+
+    \item \textbf{os.sep}：路径分隔符
+    \begin{lstlisting}
+print(os.sep)  # '/' (Linux/Mac) 或 '\' (Windows)
+    \end{lstlisting}
+  \end{itemize}
+
+  \textbf{6. 遍历目录树 - os.walk()：}
+  \begin{lstlisting}
+import os
+
+# 遍历目录树
+for root, dirs, files in os.walk('/path/to/directory'):
+    print(f'当前目录: {root}')
+    print(f'子目录: {dirs}')
+    print(f'文件: {files}')
+
+    # 处理每个文件
+    for file in files:
+        file_path = os.path.join(root, file)
+        print(f'文件路径: {file_path}')
+  \end{lstlisting}
+
+  \textbf{7. 实用示例：}
+
+  \textbf{示例1：获取目录下所有特定类型的文件}
+  \begin{lstlisting}
+import os
+
+def find_files(directory, extension):
+    """查找目录下所有指定扩展名的文件"""
+    result = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(extension):
+                result.append(os.path.join(root, file))
+    return result
+
+# 查找所有.py文件
+python_files = find_files('.', '.py')
+  \end{lstlisting}
+
+  \textbf{示例2：创建目录结构}
+  \begin{lstlisting}
+import os
+
+def create_project_structure(project_name):
+    """创建项目目录结构"""
+    dirs = [
+        f'{project_name}/src',
+        f'{project_name}/tests',
+        f'{project_name}/docs',
+        f'{project_name}/data'
+    ]
+
+    for dir_path in dirs:
+        os.makedirs(dir_path, exist_ok=True)
+        print(f'创建目录: {dir_path}')
+  \end{lstlisting}
+
+  \textbf{示例3：批量重命名文件}
+  \begin{lstlisting}
+import os
+
+def batch_rename(directory, old_ext, new_ext):
+    """批量修改文件扩展名"""
+    for filename in os.listdir(directory):
+        if filename.endswith(old_ext):
+            old_path = os.path.join(directory, filename)
+            new_name = filename.replace(old_ext, new_ext)
+            new_path = os.path.join(directory, new_name)
+            os.rename(old_path, new_path)
+            print(f'重命名: {filename} -> {new_name}')
+  \end{lstlisting}
+
+  \textbf{注意事项：}
+  \begin{itemize}
+    \item 使用os.path.join()构建路径，确保跨平台兼容性
+    \item 在删除文件或目录前，先检查是否存在
+    \item 处理文件操作时要考虑异常处理
+    \item 使用原始字符串(r'')处理Windows路径，避免转义问题
+    \item os.makedirs()的exist\_ok=True参数可以避免目录已存在的错误
+  \end{itemize}
 \end{mdframed}
 
 \subsection{第4题}
