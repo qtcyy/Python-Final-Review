@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.16)  25 JUN 2025 09:19
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.16)  25 JUN 2025 11:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -985,7 +985,12 @@ Package mdframed Info: Box was splittet wrong
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
 (mdframed)              on input line 337.
- [36] [37] [38] [39] [40] [41] [42]
+ [36] [37] [38] [39] [40] [41]
+Overfull \hbox (23.50667pt too wide) in paragraph at lines 467--468
+[]\TU/STSong(0)/m/n/10.95 判 断 条 件：| \TU/lmtt/m/n/10.95 __x <= point_x <= __x + __width \TU/STSong(0)/m/n/10.95 且 \TU/lmtt/m/n/10.95 __y <= point_y <= __y + __height 
+ []
+
+[42]
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
 (mdframed)              on input line 632.
@@ -1010,10 +1015,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 20E33101026157288A80B19A38D94437;3967.
  ) 
 Here is how much of TeX's memory you used:
- 31953 strings out of 474773
- 705706 string characters out of 5757724
+ 31957 strings out of 474773
+ 705756 string characters out of 5757724
  3312839 words of memory out of 5000000
- 53564 multiletter control sequences out of 15000+600000
+ 53568 multiletter control sequences out of 15000+600000
  563090 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  108i,8n,114p,536b,1791s stack positions out of 10000i,1000n,20000p,200000b,200000s

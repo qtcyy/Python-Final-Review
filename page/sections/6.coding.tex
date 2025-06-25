@@ -387,14 +387,14 @@ class Point:
 
 class Rectangle:
     def __init__(self, x, y, width, height):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.__x = x
+        self.__y = y
+        self.__width = width
+        self.__height = height
 
     def contain(self, point):
-        if self.x <= point.get_x() <= self.x + self.width \
-        and self.y <= point.get_y() <= self.y + self.height:
+        if self.__x <= point.get_x() <= self.__x + self.__width \
+        and self.__y <= point.get_y() <= self.__y + self.__height:
             return True
         return False
   \end{lstlisting}
@@ -462,9 +462,9 @@ result = obj.method_name(arguments)
 
   \textbf{Rectangle类：}
   \begin{itemize}
-    \item 公有属性存储矩形的位置和尺寸信息
+    \item 私有属性\texttt{\_\_x}、\texttt{\_\_y}、\texttt{\_\_width}、\texttt{\_\_height}存储矩形的位置和尺寸信息
     \item \texttt{contain}方法判断点是否在矩形内部
-    \item 判断条件：\texttt{x <= point\_x <= x + width}且\texttt{y <= point\_y <= y + height}
+    \item 判断条件：\texttt{\_\_x <= point\_x <= \_\_x + \_\_width}且\texttt{\_\_y <= point\_y <= \_\_y + \_\_height}
   \end{itemize}
 
   \textbf{7. 面向对象编程优势：}
