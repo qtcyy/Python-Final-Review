@@ -107,6 +107,63 @@ def f(a, b):
 
   \qquad 替换结果：'a1bbbbb1c1d1e'
 
+  \textbf{re模块的常见函数及用法}
+
+  \begin{itemize}
+    \item \textbf{re.match(pattern, string[, flags])}：从字符串开头开始匹配
+      \begin{itemize}
+        \item 只匹配字符串开头，如果开头不符合则返回None
+        \item 示例：\texttt{re.match(r'\textbackslash d+', '123abc')} → 匹配到'123'
+        \item 示例：\texttt{re.match(r'\textbackslash d+', 'abc123')} → 返回None
+      \end{itemize}
+
+    \item \textbf{re.search(pattern, string[, flags])}：在整个字符串中搜索第一个匹配
+      \begin{itemize}
+        \item 扫描整个字符串，返回第一个匹配的结果
+        \item 示例：\texttt{re.search(r'\textbackslash d+', 'abc123def456')} → 匹配到'123'
+      \end{itemize}
+
+    \item \textbf{re.findall(pattern, string[, flags])}：查找所有匹配项
+      \begin{itemize}
+        \item 返回一个列表，包含所有匹配的字符串
+        \item 示例：\texttt{re.findall(r'\textbackslash d+', 'a12b34c56')} → ['12', '34', '56']
+      \end{itemize}
+
+    \item \textbf{re.finditer(pattern, string[, flags])}：返回匹配对象的迭代器
+      \begin{itemize}
+        \item 返回一个迭代器，每个元素是一个Match对象
+        \item 适用于大文本，节省内存
+        \item 示例：\texttt{for m in re.finditer(r'\textbackslash d+', 'a12b34'): print(m.group())}
+      \end{itemize}
+
+    \item \textbf{re.sub(pattern, repl, string[, count=0, flags=0])}：替换匹配项
+      \begin{itemize}
+        \item 将匹配的部分替换为指定字符串
+        \item count参数指定最多替换次数，0表示全部替换
+        \item 示例：\texttt{re.sub(r'\textbackslash d+', 'X', 'a12b34')} → 'aXbX'
+      \end{itemize}
+
+    \item \textbf{re.split(pattern, string[, maxsplit=0, flags=0])}：按模式分割字符串
+      \begin{itemize}
+        \item 使用正则表达式作为分隔符分割字符串
+        \item 示例：\texttt{re.split(r'[,;]', 'a,b;c,d')} → ['a', 'b', 'c', 'd']
+      \end{itemize}
+
+    \item \textbf{re.compile(pattern[, flags])}：编译正则表达式
+      \begin{itemize}
+        \item 将正则表达式编译成Pattern对象，提高重复使用的效率
+        \item 示例：\texttt{p = re.compile(r'\textbackslash d+'); p.findall('a12b34')} → ['12', '34']
+      \end{itemize}
+  \end{itemize}
+
+  \textbf{常用的flags参数：}
+  \begin{itemize}
+    \item \texttt{re.I} 或 \texttt{re.IGNORECASE}：忽略大小写
+    \item \texttt{re.M} 或 \texttt{re.MULTILINE}：多行模式，\^{}和\$匹配每行的开头和结尾
+    \item \texttt{re.S} 或 \texttt{re.DOTALL}：使.匹配包括换行符在内的所有字符
+    \item \texttt{re.X} 或 \texttt{re.VERBOSE}：忽略空白和注释，可以写更清晰的正则表达式
+  \end{itemize}
+
 \end{mdframed}
 
 \subsection{第5题}
